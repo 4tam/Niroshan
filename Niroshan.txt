@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niroshan & Thashmini Wedding Invitation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            border: 2px solid #d4af37;
+        }
+
+        h3 {
+            color: #777;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .names {
+            font-size: 2.2rem;
+            color: #d4af37;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .names:hover {
+            transform: scale(1.05);
+        }
+
+        .click-hint {
+            font-size: 0.85rem;
+            color: #888;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Modal Overlay for Video */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(252, 228, 236, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>YOU ARE INVITED TO THE WEDDING OF</h3>
+        <div class="names" onclick="openVideo()">
+            Niroshan & Thashmini
+        </div>
+        <p class="click-hint">(වීඩියෝව නැරඹීමට නම ටච් කරන්න)</p>
+    </div>
+
+    <!-- Video Popup Container -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <span class="close-btn" onclick="closeVideo()">&times;</span>
+            <video id="weddingVideo" controls>
+                <!-- ඔබේ Animation වීඩියෝවේ Link එක මෙතැනට යොදන්න -->
+                <source src="wedding_animation.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        function openVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('weddingVideo');
+            modal.style.display = 'flex';
+            video.play();
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('weddingVideo');
+            video.pause();
+            video.currentTime = 0;
+            modal.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
